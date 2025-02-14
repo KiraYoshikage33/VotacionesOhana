@@ -1,14 +1,15 @@
 {
-  "version": 2,
-  "builds": [
+  "rewrites": [
+    { "source": "/", "destination": "/PremiosOhana.html" }
+  ],
+  "headers": [
     {
-      "src": "PremiosOhana.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "recursos/*",
-      "use": "@vercel/static"
+      "source": "/recursos/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
     }
   ]
 }
+
 
