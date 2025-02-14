@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="icon" href="recursos/OHANA.ico" type="image/x-icon">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Premios Ohana 2024/25</title>
+	<script type="text/javascript">
+     
+     function siguiente(f) {
+            if (f.check1.checked==true) {
+            f.Siguiente.style.backgroundColor = "white";
+            f.Siguiente.style.color = "#383838"}
+            else 
+            {f.Siguiente.style.backgroundColor = "#B4B4B4";
+            f.Siguiente.style.color = "white";
+            return;}
+        }   
+    </script>
+	<style type="text/css">
+		
+
+/*------------------------------------------CSS vario-----------------------------------------*/
+
+
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+		html {
+    scroll-behavior: smooth;
+}
+
+		input#boton {background-color: #146844 !important; color: white !important; transition: background-color 0.2s ease, color 0.2s ease !important;}
+		input#boton:hover {background-color: white !important; color: #146844 !important;}
+        img#bordeblanco:hover {border: 2px solid white !important}
+        font#simbolo {font-size: 40px}
+        font#textogris {color: #aaa; font-size: 14px; font-family: 'Franklin Gothic'}
+		font#negrita {font-size: 20px;}
+
+
+
+
+        .menu-container {
+            position: fixed;
+            display: inline-block;
+            z-index: 3;
+        }
+
+        .menu-button {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 100px;
+            z-index: 3;
+        }
+
+        .menu-button:hover {
+            background: #555;
+            transition: background-color 0.1s ease, color 0.1s ease !important;
+        }
+
+        .menu-button::before {
+            content: "☰"; /* Icono de tres rayas */
+            font-size: 30px;
+        }
+
+        .menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            width: 170px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.3s ease-in-out;
+            z-index: 3;
+        }
+
+        .menu a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: white;
+            border-bottom: 1px solid #ddd;
+            background: #333;
+            font-family: 'Franklin Gothic';
+        }
+
+        .menu a:hover {
+            background: #f1f1f1;
+            color: #333;
+            transition: background-color 0.1s ease, color 0.1s ease !important;
+        }
+
+        .menu a:last-child {
+            border-bottom: none;
+        }
+
+        /* Clase para mostrar el menú */
+        .menu.show {
+            max-height: 500px; /* Ajusta según la cantidad de opciones */
+        }
+        
+
+/*-----------------------------------------------Cosas enfocar-------------------------------------*/
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Oscurece el fondo */
+            backdrop-filter: blur(5px); /* Aplica el desenfoque */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0.3s;
+            z-index: 4;
+        }
+
+        .popup {
+            max-width: 300px; /* Ajusta el tamaño de la imagen */
+            max-height: 80vh;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 5;
+        }
+
+        .overlay.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+
+/*-------------------------------------------------Carrusel----------------------------------------*/
+
+
+        .carousel {
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Contenedor de las imágenes */
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        /* Imágenes */
+        .carousel img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        /* Flechas de navegación */
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+
+        .carousel-button:hover {
+            background: white;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        /* Indicadores (rayitas) */
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .indicator {
+            width: 30px;
+            height: 4px;
+            background: #555;
+            margin: 0 5px;
+            transition: background 0.3s;
+        }
+
+        .indicator.active {
+            background: white;
+        }
+
+
+
+/*--------------------------------------------Footer-----------------------------------------------*/
+
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+
+.footer-column {
+    max-width: 200px;
+    text-align: left;
+}
+
+.footer-column h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 8px;
+}
+
+.footer-column a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-column a:hover {
+    color: white;
+}
+
+.footer-rights {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #777;
+}
+
+
+
+/*------------------------------------------------Ventana------------------------------------------*/
+
+
+.overlay-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    display: none;
+    z-index: 10;
+}
+
+/* Ventana emergente */
+.popup-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    max-height: 400px; /* Establece una altura máxima */
+    background: #383838;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    display: none;
+    z-index: 20;
+    overflow-y: auto; /* Activa el scroll si el contenido es muy largo */
+}
+
+/* Botón de cerrar */
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+	</style>
+</head>
+
+
+<!------------------------------------------------Inicio-------------------------------------------->
+
+
+<body style="background-color: #146844";>
+	<div style="font-family: 'Franklin Gothic'; color: #333; margin-left: 73px; font-size: 83px; position: fixed; margin-top: -58px; z-index: 3;">HANA</div>
+	<div class="menu-container" style="margin-top: -40px;; margin-left: 15px;">
+        <button class="menu-button"></button>
+        <div class="menu">
+            <a href="#">INICIO</a>
+            <a href="#¿QS?">¿QUE SON?</a>
+            <a href="#NALP">NOMINADOS</a>
+            <a href="#GDLUE">ÚLTIMA GALA</a>
+            <a href="#GDMVP">GANADORES</a>
+            <a href="#C">CONTACTO</a>
+        </div>
+    </div>
+
+    <script>
+        const menuButton = document.querySelector('.menu-button');
+        const menu = document.querySelector('.menu');
+
+        menuButton.addEventListener('click', () => {
+            menu.classList.toggle('show');
+        });
+
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', (event) => {
+            if (!menuButton.contains(event.target) && !menu.contains(event.target)) {
+                menu.classList.remove('show');
+            }
+        });
+    </script>
+
+
+
+    <div>
+    	<img src="recursos/TrianguloIzq.png" style="position: absolute; z-index: -3; margin-top: 608px; width: 513px; margin-left: 2px;">
+    </div>
+    <div>
+    	<img src="recursos/TrianguloDrc.png" style="position: absolute; z-index: -3; margin-top: 608px; width: 513px; margin-left: 492px;">
+    </div>
+    <div align="center">
+    	<img src="recursos/GifFondo.gif" style="position: absolute; z-index: -1; margin-top: 144px; width: 1013px; margin-left: -510px;">
+    </div>
+	<div align="center" style="margin-top: 60px;">
+	<img width="400" src="recursos/OhanaLogo.png" style="margin-top: 40px;">
+	</div>
+	<div align="center" style="margin-top: 30px;">
+		<input id="boton" type="button" name="rellenar" value="Votar Ahora" style="border-radius: 100px; border: 2px solid white; background-color: #146844; font-size: 30px; font-family: 'Franklin Gothic'; color: white; padding: 10px" onclick="mostrarCapa()">
+	</div>
+
+    <div id="overlay-box" class="overlay-box" onclick="cerrarCapa()"></div>
+
+
+
+<!---------------------------------------------Ventana emergente------------------------------------>
+
+
+<div id="popup-box" class="popup-box">
+    <button class="close-btn" onclick="cerrarCapa()">✖</button>
+    <div style="font-family: 'Franklin Gothic'; color: white; margin-left: 55px; font-size: 27px; margin-top: -8px; z-index: 3; position: absolute;">OHANA 2024/25</div>
+    <div style="font-family: 'Franklin Gothic'; color: white; margin-left: -5px; font-size: 15px; margin-top: 35px; z-index: 3; position: absolute;">*EXPLICACIÓN Y NORMAS, OBLIGATORIO LEER*</div>
+    <div style="font-family: 'Franklin Gothic'; color: white; margin-top: 65px; text-align: justify;">
+        <font id="negrita"><pre>· Funcionamiento:</font></pre>
+        El funcionamiento de la votación en esta tercera edición de los Premios Ohana será totálmente diferente al sistema utilizado hasta ahora con un voto individual por categoría.
+        <br>
+         En esta edición hemos optado por un sistema mucho mejor tanto para la organización como para los votantes y nominados, donde en lugar de un solo voto, cada votante deberá ordenar de la posición 1 a la posición 4 de mejor a peor los nominados que prefiera, es decir, en primer lugar marcará su favorito, en segundo lugar su segundo favorito, etc... solo hasta 4, por mucho que en la primera fase haya 8 nominados.
+         <br>
+        Una vez hayan sido ordenados según los gustos de cada uno se deberá pulsar el botón de "Siguiente" para avanzar de categoría donde hará lo mismo hasta llegar al final.
+        <br>
+        El nominado seleccionado en primera posición recibirá un total de 4 votos, el segundo, 3 votos, el tercero, 2 votos y el cuarto y ultimo, 1 voto para el recuento final.
+        <br><br>
+        <font id="negrita"><pre>· Fases:</font></pre>
+        Esta votación se dividirá en 2 fases, la primera de ellas contará con un total de 8 nominados por categoría (En caso de no haber suficientes serán menos, pero la cantidad debería ser 8).
+        <br>
+        En esta primera fase mediante el sistema de votación previamente explicado acabarán siendo seleccionados 4 nominados que pasarán a la segunda y ultima fase (Si se produce algún empate la organización se encargará de hacer el desempate de forma manual consultando a los votantes, aunque con el nuevo sistema es complicado que pase).
+        <br>
+        Los nominados que hayan pasado a la segunda fase se regirán por el mismo sistema de votación para este último tramo. El que obtenga más votos una vez hecho el recuento será el ganador de esa categoría.
+        <br><br>
+        <font id="negrita"><pre>· Normas:</font></pre>
+        A continuación se podrá ver una lista con las principales normas y reglas a seguir para los votantes, cualquier infrancción sobre estas como búsqueda de "vacios legales" por mínima que sea tendrá consecuencias y amonestaciones (obviamente siempre se puede revisar el caso pero no debería suceder).
+        <br>
+        - Solo una votación en cada fase por persona, antes de votar se pedirá una identificación intransferible que será entregada a cada votante antes de participar para evitar suplantaciones de identidad. Al enviar el formulario lo primero que llegará será la identificación, si la persona con esa identificación se repite en la base de datos, será sancionado a menos que demuestre el porque no debería estarlo y en tal caso se considerará.
+        <br>
+        - Votación seria y relativamente objetiva, con esto me refiero, no a votar con un critrio objetivo por completo, ya que es una votación en base a gustos y preferencias por lo que debe basarse en la subjetividad, pero este punto está mas orientado a que los votos sean realmente porque asi lo cree el votante y no por el típico "el nominado es mi amigo" o "me voy a votar a mi mismo y así gano". Por muy profesionales que sean estos premios, no dejan de ser unos premios entre amigos, y que no deberían ser motivo de amaño ni de autovotación, siempre que esta no sea de forma totalmente objetiva porque el votante realmente crea que merece esa posición. Desde la organización esto no es detectable aunque siempre se nota cuando pasa o no, por lo que no será sanción directa pero si es algo completamente descarado se hará un llamado de atención, al final el objetivo de esto es pasarlo bien.
+        <br>
+        - Confidencialidad en los votos, desde el momento en el que se inicie la primera votación hasta el final de la gala los votos de cada persona deben ser completamente secretos para cada persona, para evitar asi que se revelen ganadores antes de tiempo.
+        <br>
+        - No volver atras en la votación, una vez se pulsa el botón "Siguiente" los datos se registran por lo que al volver atras e intentar modificarlos se puede llevar a estropear la página. Solo se debe pulsar este botón cuando se esté completamente seguro de los votos.
+        <br>
+        - No influir sobre los votos de nadie, es decir, no incitar a nadie a que vote por algo solo porque uno quiera, cada voto debe ser personal y decidido por la persona correspondiente.
+        <br><br>
+        <font id="negrita"><pre>· Términos y condiciones:</font></pre>
+        Las unicas condiciones son colabrorar en todo lo posible siempre que se pueda para llevar a cabo esta gala, esto es totalmente gratuito y lo hacemos por hacer este evento divertido para todos y para pasar un buen rato recordando el año y conmemorando lo ocurrido. Si se encuentra algún tipo de fallo, se quiere dar alguna sugerencia o ayudar en lo que sea, siempre será de apoyo comunicarnoslo por cualquier vía para tratar de hacer que todo fluya mucho mejor.
+        <br><br><hr><br><form name="f" method="get" action="PremiosOhanaVotación.html">
+        <input type="checkbox" name="check1" onchange="siguiente(f)" required> He leido todo y acepto
+        <br><br><hr><br>
+        <input type="submit" name="Siguiente" value="Adelante" style="border-radius: 100px; border: none; background-color: #B4B4B4; font-size: 20px; font-family: 'Franklin Gothic'; color: white; padding: 10px; margin-left: 100px;">
+    </form>
+    </div>
+    <script>
+function mostrarCapa() {
+    document.getElementById("overlay-box").style.display = "block";
+    document.getElementById("popup-box").style.display = "block";
+}
+
+function cerrarCapa() {
+    document.getElementById("overlay-box").style.display = "none";
+    document.getElementById("popup-box").style.display = "none";
+}
+</script>
+</div>
+
+
+
+<!-------------------------------------------------Que Son------------------------------------------>
+
+
+	<div style="margin-top: 230px; z-index: -2;" align="center">
+		<table>
+			<tr>
+				<td height="1040" width="1040" style="background-color: #EAEAEA; border: 10px solid #EAEAEA;">
+					<div id="¿QS?" style="margin-top: -50px;" align="center">
+						<table>
+							<tr>
+								<td style=" font-family: 'Franklin Gothic'; font-weight: bold; font-size: 30px;">¿Que son los Premios Ohana?</td>
+							</tr>
+						</table>
+					</div>
+					<div style="margin-top: 20px;">
+						<table>
+							<tr>
+								<td align="center" style=" font-family: 'Franklin Gothic'; font-size: 20px;">Los Premios Ohana son una gala de premios del aclamado grupo "perdidit dies iterum", donde nos encargamos de reconocer los méritos individuales, comunes e incluso abstractos acontecidos a lo largo del año.<br><br>
+								Durante esta gala, además de una "Ohana" previa donde los participantes disfrutan de una tarde de ocio todos en conjunto y compañia para cerrar con broche de oro, se entregarán los respectivos premios de las direfentes categorías seleccionadas ese año a su ganador o sus ganadores.<br><br>
+								Esta gala se realiza en uno de los días de la Semana Santa, y desde la Semana Santa de un año hasta la del siguiente es la duración en la que se recopilan los nominados para la premiación.<br><br>
+								Lo que buscamos con estos premios es darle el reconocimiento merecido a cada uno de los integrantes del grupo que se hayan esforzado por conseguirlo, el objetivo ante todo siempre es pasarlo bien y no se busca desmeritar a nadie o generar ningún tipo de conflicto, lo principal es estar todos juntos y disfrutar.<br><br>
+							</td>
+							</tr>
+						</table>
+					</div>
+                    <div align="center" style="margin-top: -50px;">
+                        <table cellspacing="30">
+                            <tr>
+                                <td><img style="border-radius: 20px;" src="recursos/GifPes.gif" width="270"></td>
+                                <td><img src="recursos/GifMvp.gif" width="270" style="margin-top: 150px; border-radius: 20px;"></td>
+                                <td><img style="border-radius: 20px;" src="recursos/GifHugo.gif" width="270"></td>
+                            </tr>
+                        </table>
+                    </div>
+				</td>
+			</tr>
+		</table>
+		<div>
+    	<img src="recursos/TrianguloIzqVerde.png" style="position: absolute; z-index: 0; width: 513px; margin-left: -510px; ; margin-top: -72px;">
+    </div>
+    <div>
+    	<img src="recursos/TrianguloDrcVerde.png" style="position: absolute; z-index: 0; width: 513px; margin-left: -10px; margin-top: -72px;">
+    </div>
+	</div>
+
+<!--------------------------------------------------Nominados--------------------------------------->
+
+
+
+	<div style="color: white;" id="NALP" align="center">
+                        <table style="padding-top: 30px;">
+                            <tr>
+                                <td style=" font-family: 'Franklin Gothic'; font-weight: bold; font-size: 30px;">Nominados a los premios</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="margin-top: 20px; color: white;">
+                        <table style="margin-left: 10px; margin-right: 10px;">
+                            <tr>
+                                <td align="center" style=" font-family: 'Franklin Gothic'; font-size: 20px;">El número de nominados a la gala de los Premios Ohana ha ido aumentando año tras año a lo largo de sus ediciones pero los nominados de esta edición se reducen a los siguientes ocho:
+                                    <br>
+                                    <table cellspacing="35" style="margin-bottom: 0px;">
+                                        <tr>
+                                            <td><img id="bordeblanco" style="border-radius: 20px;" width="150" height="200" src="recursos/Eric.jpeg" onclick="mostrarImagen('recursos/EricCarta.png')"></td>
+                                            <td><img id="bordeblanco" style="border-radius: 20px;" width="150" height="200" src="recursos/Mario.jpeg" onclick="mostrarImagen('recursos/MarioCarta.png')"></td>
+                                            <td><img id="bordeblanco" style="border-radius: 20px;" width="150" height="200" src="recursos/Lorenzo.jpeg" onclick="mostrarImagen('recursos/LorenzoCarta.png')"></td>
+                                            <td><img id="bordeblanco" style="border-radius: 20px;" width="150" height="200" src="recursos/Hugo.jpeg" onclick="mostrarImagen('recursos/HugoCarta.png')"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><img id="bordeblanco" style="border-radius: 20px;" width="150" height="200" src="recursos/Hugofriki.jpeg" onclick="mostrarImagen('recursos/HugofrikiCarta.png')"></td>
+                                            <td><img id="bordeblanco" style="border-radius: 20px;" width="150" height="200" src="recursos/Aaron.jpeg" onclick="mostrarImagen('recursos/AaronCarta.png')"></td>
+                                            <td><img id="bordeblanco" style="border-radius: 20px;" width="150" height="200" src="recursos/Sergio.jpeg" onclick="mostrarImagen('recursos/SergioCarta.png')"></td>
+                                            <td><img id="bordeblanco" style="border-radius: 20px;" width="150" height="200" src="recursos/Diex.jpeg" onclick="mostrarImagen('recursos/DiexCarta.png')"></td>
+                                            <div class="overlay" id="overlay" onclick="cerrarImagen()">
+        <img src="" class="popup" id="imagen-popup">
+    </div>
+
+    <script>
+        function mostrarImagen(ruta) {
+            document.getElementById("imagen-popup").src = ruta; // Cambia la imagen
+            document.getElementById("overlay").classList.add("show");
+        }
+
+        function cerrarImagen() {
+            document.getElementById("overlay").classList.remove("show");
+        }
+    </script> 
+                                        </tr>
+                                    </table></td>
+                            </tr>
+                        </table>
+                    </div>
+
+
+<!------------------------------------------------Carrusel------------------------------------------>
+
+
+                    <div>
+        <img src="recursos/TrianguloIzq.png" style="position: absolute; z-index: -3; margin-top: 149px; width: 513px; margin-left: 2px;">
+    </div>
+    <div>
+        <img src="recursos/TrianguloDrc.png" style="position: absolute; z-index: -3; margin-top: 149px; width: 513px; margin-left: 492px;">
+    </div>
+    <div style="margin-top: 230px; z-index: -3;" align="center">
+        <table>
+            <tr>
+                <td height="1020" width="1040" style="background-color: #EAEAEA; border: 10px solid #EAEAEA;">
+                    <div id="GDLUE" style="margin-top: -150px;" align="center">
+                        <table>
+                            <tr>
+                                <td style=" font-family: 'Franklin Gothic'; font-weight: bold; font-size: 30px;">Premiados de la última edición</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <table>
+                            <tr>
+                                <td align="center" style=" font-family: 'Franklin Gothic'; font-size: 20px; padding-bottom: 50px;">La última edición de los Premios Ohana fue la gala 2023/24, en la cual, tras una serie de votaciones y fases se repartieron un total de 10 diferentes premios a sus respectivos ganadores, algunos individuales, otros grupales, y otros que a dia de hoy, se sige desconociendo el ganador.<br><br>
+                                    Tanto los premios como los nominados en cada edición son elegidos en consenso por todos los miembros del grupo que pondran sus ideas en común, y para los ganadores de los mismos se entregan tanto un diploma respectivo a cada premio como, para el premio definitivo de los Ohana, el MVP, la estatuilla representativa y conmemorativa al "Mejor del año".<br><br>
+                                        Los diplomas entregados en la última edición son los siguientes:
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="margin-left: 190px;" class="carousel">
+        <div class="carousel-track">
+            <img style="z-index: 1 !important;" src="recursos/Dip1.png" alt="Imagen 1" onclick="mostrarImagen('recursos/Dip1.png')">
+            <img style="z-index: 1 !important;" src="recursos/Dip2.png" alt="Imagen 2" onclick="mostrarImagen('recursos/Dip2.png')">
+            <img style="z-index: 1 !important;" src="recursos/Dip3.png" alt="Imagen 3" onclick="mostrarImagen('recursos/Dip3.png')">
+            <img style="z-index: 1 !important;" src="recursos/Dip4.png" alt="Imagen 4" onclick="mostrarImagen('recursos/Dip4.png')">
+            <img style="z-index: 1 !important;" src="recursos/Dip5.png" alt="Imagen 5" onclick="mostrarImagen('recursos/Dip5.png')">
+            <img style="z-index: 1 !important;" src="recursos/Dip6.png" alt="Imagen 6" onclick="mostrarImagen('recursos/Dip6.png')">
+            <img style="z-index: 1 !important;" src="recursos/Dip7.png" alt="Imagen 7" onclick="mostrarImagen('recursos/Dip7.png')">
+            <img style="z-index: 1 !important;" src="recursos/Dip8.png" alt="Imagen 8" onclick="mostrarImagen('recursos/Dip8.png')">
+            <img style="z-index: 1 !important;" src="recursos/Dip9.png" alt="Imagen 9" onclick="mostrarImagen('recursos/Dip9.png')">
+            <img style="z-index: 1 !important;" src="recursos/Dip10.png" alt="Imagen 10" onclick="mostrarImagen('recursos/Dip10.png')">
+            <script>
+        function mostrarImagen(ruta) {
+            document.getElementById("imagen-popup").src = ruta; // Cambia la imagen
+            document.getElementById("overlay").classList.add("show");
+        }
+
+        function cerrarImagen() {
+            document.getElementById("overlay").classList.remove("show");
+        }
+    </script> 
+
+
+        </div>
+        <button style="z-index: 2;" class="carousel-button prev" onclick="moverCarrusel(-1)">❮</button>
+        <button style="z-index: 2;" class="carousel-button next" onclick="moverCarrusel(1)">❯</button>
+    </div>
+
+    <!-- Indicadores -->
+    <div class="carousel-indicators" id="indicators"></div>
+
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const images = document.querySelectorAll('.carousel img');
+        const totalImages = images.length;
+        let currentIndex = 0;
+
+        // Crear indicadores dinámicos
+        const indicatorsContainer = document.getElementById("indicators");
+        for (let i = 0; i < totalImages; i++) {
+            let indicator = document.createElement("div");
+            indicator.classList.add("indicator");
+            if (i === 0) indicator.classList.add("active"); // Primer indicador activo
+            indicatorsContainer.appendChild(indicator);
+        }
+        const indicators = document.querySelectorAll(".indicator");
+
+        function actualizarCarrusel() {
+            // Mover el carrusel
+            track.style.transform = `translateX(${-currentIndex * 100}%)`;
+
+            // Actualizar indicadores
+            indicators.forEach((dot, index) => {
+                dot.classList.toggle("active", index === currentIndex);
+            });
+        }
+
+        function moverCarrusel(direccion) {
+            currentIndex += direccion;
+
+            // Si se pasa del último, vuelve al primero
+            if (currentIndex >= totalImages) {
+                currentIndex = 0;
+            }
+            // Si se va antes del primero, vuelve al último
+            else if (currentIndex < 0) {
+                currentIndex = totalImages - 1;
+            }
+
+            actualizarCarrusel();
+        }
+
+        // Cambiar automáticamente cada 4 segundos
+        setInterval(() => moverCarrusel(1), 8000);
+    </script>
+
+                </td>
+            </tr>
+        </table>
+        <div>
+        <img src="recursos/TrianguloIzqVerde.png" style="position: absolute; z-index: 0; width: 513px; margin-left: -510px; ; margin-top: -72px;">
+    </div>
+    <div>
+        <img src="recursos/TrianguloDrcVerde.png" style="position: absolute; z-index: 0; width: 513px; margin-left: -10px; margin-top: -72px;">
+    </div>
+    </div>
+
+
+<!-------------------------------------------------Ganadores---------------------------------------->
+
+
+
+    <div style="color: white;" id="GDMVP" align="center">
+                        <table style="padding-top: 30px;">
+                            <tr>
+                                <td style=" font-family: 'Franklin Gothic'; font-weight: bold; font-size: 30px;">Ganadores del MVP</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div style="margin-top: 20px; color: white;">
+                        <table style="margin-left: 10px; margin-right: 10px;">
+                            <tr>
+                                <td align="center" style=" font-family: 'Franklin Gothic'; font-size: 20px;">La categoría principal de los Premios Ohana es el MVP, es decir, el mejor del año, en un promedio de todos los ámbitos, y hasta la fecha solo hay 2 ganadores de este anhelado premio, aquellos que han sido galardonados con el trofeo, con el Ohana. Este año se entregará un nuevo trofeo para un tercer ganador, pero los que hay registrados hasta ahora son:
+                                    <br>
+                                    <table cellspacing="35" style="margin-bottom: 0px;">
+                                        <tr>
+                                            <td style="text-align: center;"><img id="bordeblanco" style="border-radius: 20px;" width="150" height="200" src="recursos/Hugo.jpeg" onclick="mostrarImagen('recursos/HugoPremio.jpeg')"><br>Ganador de <br>la edición <br> 2022/23</td>
+                                            <td style="text-align: center;"><img id="bordeblanco" style="border-radius: 20px;" width="150" height="200" src="recursos/Hugofriki.jpeg" onclick="mostrarImagen('recursos/HugofrikiPremio.jpg')"><br>Ganador de <br>la edición <br> 2023/24</td>
+                                            <td style="text-align: center;"><img style="border-radius: 20px;" width="150" height="200" src="recursos/Interrogante.jpg"><br>Ganador de <br>la edición <br> 2024/25</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"><div style="margin-left: 50px;" align="center"><img width="260" src="recursos/OhanaTrofeo.png"></div> </td>
+                                        </tr>
+        <img src="" class="popup" id="imagen-popup">
+    </div>
+
+    <script>
+        function mostrarImagen(ruta) {
+            document.getElementById("imagen-popup").src = ruta; // Cambia la imagen
+            document.getElementById("overlay").classList.add("show");
+        }
+
+        function cerrarImagen() {
+            document.getElementById("overlay").classList.remove("show");
+        }
+    </script> 
+                                        </tr>
+                                    </table></td>
+                            </tr>
+                        </table>
+                    </div>
+
+
+<!----------------------------------------------Contacto-------------------------------------------->
+
+            <div style="width: 1007px; height: 500px; background-color: #383838; font-family: 'Franklin Gothic';">
+                <footer>
+    <div class="footer-container">
+        <!-- Primera columna -->
+        <div style="margin-top: 40px;" class="footer-column">
+            <h3>Gala</h3>
+            <ul>
+                <li><a href="https://youtu.be/ajMfkXc51hc?si=5oqMpayHD5S3RDpM">Acerca de</a></li>
+                <li><a href="https://youtu.be/ajMfkXc51hc?si=5oqMpayHD5S3RDpM">Invitaciones</a></li>
+                <li><a href="https://youtu.be/ajMfkXc51hc?si=5oqMpayHD5S3RDpM">Cómo funciona</a></li>
+            </ul>
+        </div>
+
+        <!-- Segunda columna -->
+        <div style="margin-top: 40px;" class="footer-column">
+            <h3>Votaciones</h3>
+            <ul>
+                <li><a href="https://youtu.be/ajMfkXc51hc?si=5oqMpayHD5S3RDpM">Reglas</a></li>
+                <li><a href="https://youtu.be/ajMfkXc51hc?si=5oqMpayHD5S3RDpM">FAQ</a></li>
+                <li><a href="https://youtu.be/ajMfkXc51hc?si=5oqMpayHD5S3RDpM">Seguridad en el proceso</a></li>
+            </ul>
+        </div>
+
+        <!-- Tercera columna -->
+        <div style="margin-top: 40px;" class="footer-column">
+            <h3>Soporte</h3>
+            <ul>
+                <li><a href="https://youtu.be/ajMfkXc51hc?si=5oqMpayHD5S3RDpM">Contacto</a></li>
+                <li><a href="https://youtu.be/ajMfkXc51hc?si=5oqMpayHD5S3RDpM">Reportar un problema</a></li>
+            </ul>
+        </div>
+
+        <!-- Cuarta columna -->
+        <div style="margin-top: 40px;" class="footer-column">
+            <h3>Legal</h3>
+            <ul>
+                <li><a href="https://youtu.be/ajMfkXc51hc?si=5oqMpayHD5S3RDpM">Términos y condiciones</a></li>
+                <li><a href="https://youtu.be/ajMfkXc51hc?si=5oqMpayHD5S3RDpM">Política de privacidad</a></li>
+            </ul>
+        </div>
+
+        <!-- Redes Sociales -->
+        <div style="margin-top: 40px;" class="footer-column">
+            <h3>Síguenos</h3>
+            <a target="_blank" href="https://www.instagram.com/premiosohana/?utm_source=ig_web_button_share_sheet">Instagram</a> | <a target="_blank" href="Https://www.youtube.com/@PremiosOHANA">YouTube</a><br>
+            <font id="textogris">premiosohana@gmail.com</font>
+        </div>
+    </div>
+
+    <div id="C" style="font-family: 'Franklin Gothic'; color: white; margin-left: 175px; font-size: 190px; margin-top: 30px; z-index: 3; position: absolute;">OHANA<font id="simbolo">®</font></div>
+
+    <!-- Derechos reservados -->
+    <div style="margin-top: 320px;"><p align="center" class="footer-rights">© 2025 Premios Ohana. Todos los derechos reservados.</p></div>
+</footer>
+            </div>
+</body>
+</html>
