@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="Recursos/OHANA.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Premios Ohana 2024/25</title>
+    <script type="text/javascript">
+
+    </script>
+    <style>
+        html {
+    transform: scale(0.6);
+    transform-origin: center center; /* Zoom centrado en el medio */
+}
+
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .game-container {
+            display: grid;
+            grid-template-columns: repeat(4, 150px);
+            grid-gap: 20px;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            width: 160px;
+            height: 230px;
+            background-image: url(Recursos/CartasDetras.jpg);
+            background-size: cover;
+            border-radius: 10px;
+            border: 1px solid black;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover {
+            border: 1px solid white !important;
+        }
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+        .card.flipped img {
+            display: block;
+        }
+        .card.flipped {
+            background-color: transparent;
+        }
+        .card:active {
+            transform: scale(0.95);
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 55px;
+            text-align: center;
+            margin-left: 50px;
+            font-family: 'Franklin Gothic';
+            color: white;
+        }
+
+
+        .timer {
+    font-family: 'Arial', sans-serif; 
+    font-size: 70px;
+    color: #FFFFFF; /* Blanco para el texto */
+    position: absolute;
+    top: 20px; /* Ubicación en la parte superior */
+    left: 20px; /* Ubicación a la izquierda */
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro con opacidad */
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #FFD700; /* Borde dorado */
+}
+
+    </style>
+</head>
+<body style="background-color: #146844;">
+
+    <div style="margin-left: 900px; margin-top: -100px;" id="timer" class="timer">
+    00:00
+</div>
+
+
+    <div class="game-container" id="game-container"></div>
+<div class="message" id="message"></div>
+<div id="timer" style="font-size: 20px; color: #ff4500; margin-top: 20px;"></div> <!-- Para mostrar el cronómetro -->
+
+<script>
+    const images = [
+        'Recursos/EricCarta.png', 'Recursos/MarioCarta.png', 'Recursos/LorenzoCarta.png', 'Recursos/HugoCarta.png', 
+        'Recursos/HugofrikiCarta.png', 'Recursos/AaronCarta.png', 'Recursos/SergioCarta.png', 'Recursos/DiexCarta.png',
+        'Recursos/EricCarta.png', 'Recursos/MarioCarta.png', 'Recursos/LorenzoCarta.png', 'Recursos/HugoCarta.png',
+        'Recursos/HugofrikiCarta.png', 'Recursos/AaronCarta.png', 'Recursos/SergioCarta.png', 'Recursos/DiexCarta.png'
+    ];
+
+    let cardsArray = [];
+    let flippedCards = [];
+    let matchedCards = 0;
+    let timerInterval;
+    let seconds = 0;
+    let minutes = 0;
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]]; // Intercambiar los elementos
+        }
+        return array;
+    }
+
+    function createCard(image) {
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.dataset.image = image;
+
+        const img = document.createElement('img');
+        img.src = image;
+        card.appendChild(img);
+
+        card.addEventListener('click', () => flipCard(card));
+
+        return card;
+    }
+
+    function flipCard(card) {
+        if (flippedCards.length === 2 || card.classList.contains('flipped')) {
+            return;
+        }
+
+        card.classList.add('flipped');
+        flippedCards.push(card);
+
+        if (flippedCards.length === 2) {
+            checkMatch();
+        }
+    }
+
+    function checkMatch() {
+        const [card1, card2] = flippedCards;
+        if (card1.dataset.image === card2.dataset.image) {
+            matchedCards++;
+            flippedCards = [];
+
+            if (matchedCards === images.length / 2) {
+                clearInterval(timerInterval); // Detener el cronómetro
+                document.getElementById('message').textContent = "¡Lo lograste comaaaaando!";
+            }
+        } else {
+            setTimeout(() => {
+                card1.classList.remove('flipped');
+                card2.classList.remove('flipped');
+                flippedCards = [];
+            }, 1000);
+        }
+    }
+
+    function startTimer() {
+        timerInterval = setInterval(() => {
+            seconds++;
+            if (seconds === 60) {
+                seconds = 0;
+                minutes++;
+            }
+
+            // Formato 00:00
+            const formattedTime = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            document.getElementById('timer').textContent = formattedTime;
+        }, 1000);
+    }
+
+    function startGame() {
+        document.getElementById('message').textContent = '';
+        document.getElementById('timer').textContent = '00:00'; // Inicializa el cronómetro en 00:00
+        seconds = 0; // Reiniciar los segundos
+        minutes = 0; // Reiniciar los minutos
+        matchedCards = 0; // Reiniciar las parejas acertadas
+        cardsArray = shuffleArray(images.slice());
+        const gameContainer = document.getElementById('game-container');
+        gameContainer.innerHTML = '';
+
+        cardsArray.forEach(image => {
+            gameContainer.appendChild(createCard(image));
+        });
+
+        startTimer(); // Comienza el cronómetro al iniciar el juego
+    }
+
+    // Iniciar el juego al cargar la página
+    window.onload = startGame;
+</script>
+
+
+
+
+</body>
+</html>
