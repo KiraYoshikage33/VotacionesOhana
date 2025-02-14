@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/PremiosOhana.html",
+      "permanent": true
+    }
+  ]
+}
