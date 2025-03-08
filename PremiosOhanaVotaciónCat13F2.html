@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="icon" href="Recursos/OHANA.ico" type="image/x-icon">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Premios Ohana 2024/25</title>
+  <script type="text/javascript">
+  function avanzar1(f) {
+    if (f.Id.value == "") {
+        alert("Datos vacíos, por favor rellénelos.");
+        return;
+    }
+
+    if (f.Id.value == "Nigger") {
+        alert("Pero tu eres tonto o que chaval.");
+        return;
+    }
+    if (f.Id.value == "nigger") {
+        alert("Pero tu eres tonto o que chaval.");
+        return;
+    }
+
+    const idsValidos = ["E-6775", "M-5157", "L-8168", "H-1955", "H-1779", "A-1121", "S-3593", "D-3826"];
+
+    if (!idsValidos.includes(f.Id.value)) {
+        alert("El identificador es incorrecto.");
+        return;
+    }
+
+    // Acceder correctamente a los elementos
+    document.getElementById("Categoria1").style.display = "block";
+    document.getElementById("Identificador").style.display = "none";
+}
+
+
+function validarYAvanzar() {
+    if (selectedRanks.length < 4) {
+        alert("Debes marcar 4 opciones antes de continuar.");
+    } else {
+        // Si todo está bien, redirige a la siguiente página
+        location.href = "PremiosOhanaVotaciónCat14F2.html";  // Cambia la URL de la página según corresponda
+    }
+}
+
+    </script>
+  <style type="text/css">
+    input#borde:hover {border: 1px solid white !important;}
+
+
+/*------------------------------------------------Ventana------------------------------------------*/
+
+
+.overlay-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    z-index: 10;
+}
+
+/* Ventana emergente */
+.popup-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 650px;
+    max-height: 1000px; /* Establece una altura máxima */
+    background: #146844;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 20;
+    height: 500px;
+}
+
+/* Botón de cerrar */
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+
+/*----------------------------------------------Botones Rank---------------------------------------*/
+
+
+
+.rank-btn {
+        width: 30px;
+        height: 30px;
+        background-color: rgba(56, 56, 56, 0.7);
+        border-radius: 50%;
+        border: none;
+        color: white;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+        position: relative; /* Esto hace que no esté centrado en la celda */
+        margin-top: 5px;
+        margin-left: 5px;
+    }
+
+    .rank-btn:hover {
+        border: 2px solid white;
+    }
+
+    .rank-btn.selected {
+        background-color: lightblue;
+        color: black;
+    }
+
+  </style>
+</head>
+<body style="background-color: #146844">
+  <form name="f">
+  <div class="overlay-box">
+    <div id="Identificador" class="popup-box">
+      <div>
+        <img src="Recursos/LineasV.png" style="position: absolute; width:  690px; z-index:-1; margin-left: -20px; margin-top: -20px; height: 540px; border-radius: 15px;">
+      </div>
+      <div align="center">
+        <img src="Recursos/OhanaLogo.png" width="200" style="position: absolute; margin-left: -95px; margin-top: -20px;">
+      </div>
+      <div style="font-family: 'Franklin Gothic'; color: white; margin-left: -25px; font-size: 35px; margin-top: 135px; z-index: 3; position: absolute; text-align: center;">Porfavor, introduce tu identificación de usuario.</div>
+      <div align="center" style="margin-top: 270px;">
+        <input name="Id" id="codigoInput" placeholder="X-XXXX" type="text" maxlength="6" size="15" style="height: 40px; border: 2px solid white; background-color: #383838; backface-visibility: 2px; border-radius: 10px; color: white; font-size: 26px; text-align: center;">
+      </div>
+      <div align="center">
+        <input type="button" name="Siguiente" value="Siguiente" style="border-radius: 100px; border: none; background-color: white; font-size: 25px; font-family: 'Franklin Gothic'; color: #383838; padding: 10px; margin-top: 130px; height: 50px; width: 260px; position: absolute; margin-left: -130px;" onclick="avanzar1(f)">
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+    <div id="Categoria1" style="z-index: 30px;" class="popup-box">
+      <div>
+        <img src="Recursos/LineasV.png" style="position: absolute; width:  690px; z-index:-1; margin-left: -20px; margin-top: -20px; height: 540px; border-radius: 15px;">
+      </div>
+      <div align="center">
+        <img src="Recursos/OhanaLogo.png" width="200" style="position: absolute; margin-left: -95px; margin-top: -20px;">
+      </div>
+      <div align="center" style="font-size: 50px; margin-top: 125px; font-family: 'Franklin Gothic'; color: white;">
+        <p>SERVER DEL AÑO</p>
+      </div>
+      <div style="position: absolute; margin-left: 68px; margin-top: -20px; z-index: 5; font-size: 20px;">
+    <table cellspacing="5">
+        <tr>
+            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px;" width="120" height="170">Server survival verano (Draconic)<div style="position: absolute; margin-left: 41px; margin-top: 0px;" align="center"><button class="rank-btn" data-id="1"></button></div></td>
+            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px;" width="120" height="120">Compaland III<div style="position: absolute; margin-left: 41px; margin-top: 33px;" align="center"><button class="rank-btn" data-id="2"></button></div></td>
+            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px;" width="120" height="120">PP 2<div style="position: absolute; margin-left: 41px; margin-top: 33px;" align="center"><button class="rank-btn" data-id="3"></button></div></td>
+            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px;" width="120" height="120">ZetaCraft<div style="position: absolute; margin-left: 41px; margin-top: 33px;" align="center"><button class="rank-btn" data-id="4"></button></div></td>
+        </tr>
+    </table>
+    <script>
+    let selectedRanks = [];
+const buttons = document.querySelectorAll(".rank-btn");
+
+buttons.forEach(button => {
+    button.addEventListener("click", function(event) {
+        event.preventDefault(); // Evitar la acción predeterminada del botón
+
+        let id = this.getAttribute("data-id");
+        let index = selectedRanks.indexOf(id);
+
+        if (index === -1) { // Si no está seleccionada
+            if (selectedRanks.length < 4) {
+                selectedRanks.push(id);
+                this.classList.add("selected");
+                this.textContent = selectedRanks.length;
+            } else {
+                alert("Debes desmarcar una opción antes de seleccionar otra.");
+            }
+        } else { // Si ya está seleccionada
+            selectedRanks.splice(index, 1);
+            this.classList.remove("selected");
+            this.textContent = "";
+
+            // Reajustar el ranking de los botones
+            buttons.forEach(btn => {
+                let btnId = btn.getAttribute("data-id");
+                let newIndex = selectedRanks.indexOf(btnId);
+                btn.textContent = newIndex !== -1 ? selectedRanks.indexOf(btnId) + 1 : "";
+            });
+        }
+    });
+});
+
+</script>
+</div>
+      <div align="center" style="position: fixed; margin-left: 195px;">
+        <input type="button" name="Siguiente" value="Siguiente" style="border-radius: 100px; border: none; background-color: white; font-size: 25px; font-family: 'Franklin Gothic'; color: #383838; padding: 10px; margin-top: 214px; height: 50px; width: 260px;" onclick="validarYAvanzar()">
+      </div>
+    </div>
+
+  </form>
+
+</body>
+</html>
