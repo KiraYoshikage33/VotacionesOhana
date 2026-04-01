@@ -46,6 +46,7 @@ function validarYAvanzar() {
     </script>
   <style type="text/css">
     input#borde:hover {border: 1px solid white !important;}
+    img#fotos:hover {border: 1px solid white;}
 
 
 /*------------------------------------------------Ventana------------------------------------------*/
@@ -108,6 +109,7 @@ function validarYAvanzar() {
         position: relative; /* Esto hace que no esté centrado en la celda */
         margin-top: 5px;
         margin-left: 5px;
+        z-index: 2;
     }
 
     .rank-btn:hover {
@@ -118,6 +120,40 @@ function validarYAvanzar() {
         background-color: lightblue;
         color: black;
     }
+
+
+/*-----------------------------------------------Cosas enfocar-------------------------------------*/
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Oscurece el fondo */
+            backdrop-filter: blur(5px); /* Aplica el desenfoque */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0.3s;
+            z-index: 4;
+        }
+
+        .popup {
+            max-width: 300px; /* Ajusta el tamaño de la imagen */
+            max-height: 80vh;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 5;
+        }
+
+        .overlay.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+
 
   </style>
 </head>
@@ -159,23 +195,69 @@ function validarYAvanzar() {
         <img src="Recursos/OhanaLogo.png" width="200" style="position: absolute; margin-left: -95px; margin-top: -20px;">
       </div>
       <div align="center" style="font-size: 50px; margin-top: 125px; font-family: 'Franklin Gothic'; color: white;">
-        <p>AUDIO DEL AÑO</p>
+        <p>JUEGO DEL AÑO</p>
       </div>
       <div style="position: absolute; margin-left: 90px; margin-top: -50px; z-index: 5;">
     <table cellspacing="5">
         <tr>
-            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px;" width="110" height="120">Mosquito<br> <audio controls style="width: 100px; height: 30px;"> <source src="Recursos/Audio1.mp3" type="audio/mpeg"> </audio> <div style="position: absolute; margin-left: 35px; margin-top:0px;" align="center"><button class="rank-btn" data-id="1"></button></div></td>
-            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px;" width="110" height="120">Huesitos<br> <audio controls style="width: 100px; height: 30px;"> <source src="Recursos/Audio2.mp3" type="audio/mpeg"> </audio> <div style="position: absolute; margin-left: 35px; margin-top: 0px;" align="center"><button class="rank-btn" data-id="2"></button></div></td>
-            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px;" width="110" height="120">Rayo<br> <audio controls style="width: 100px; height: 30px;"> <source src="Recursos/Audio3.mp3" type="audio/mpeg"> </audio> <div style="position: absolute; margin-left: 35px; margin-top: 0px;" align="center"><button class="rank-btn" data-id="3"></button></div></td>
-            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px;" width="110" height="120">Ooo que sera<br> <audio controls style="width: 100px; height: 30px;"> <source src="Recursos/Audio4.mp3" type="audio/mpeg"> </audio> <div style="position: absolute; margin-left: 35px; margin-top: 0px;" align="center"><button class="rank-btn" data-id="4"></button></div></td>
+            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #C087DE; border-radius: 15px; background-size: cover;" width="110" height="120">
+                <div style="position: absolute; z-index: 1;">
+                    <img id="fotos" onclick="mostrarImagen('Recursos/Gnomos.png')" src="Recursos/Gnomos.png" style="width: 112px; height: 122px; border-radius: 15px; margin-top: -61px; margin-left: -1px;">
+                </div>
+                <div style="position: absolute; margin-left: 35px; margin-top: 15px;" align="center"><button class="rank-btn" data-id="1"></button></div></td>
+            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #C087DE; border-radius: 15px;" width="110" height="120">
+                <div style="position: absolute; z-index: 1;">
+                    <img id="fotos" onclick="mostrarImagen('Recursos/Speedrunners2.png')" src="Recursos/Speedrunners2.png" style="width: 112px; height: 122px; border-radius: 15px; margin-top: -61px; margin-left: -1px;">
+                </div>
+                <div style="position: absolute; margin-left: 35px; margin-top: 15px;" align="center"><button class="rank-btn" data-id="2"></button></div></td>
+            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #C087DE; border-radius: 15px;" width="110" height="120">
+                <div style="position: absolute; z-index: 1;">
+                    <img id="fotos" onclick="mostrarImagen('Recursos/Minecraft.jpg')" src="Recursos/Minecraft.jpg" style="width: 112px; height: 122px; border-radius: 15px; margin-top: -61px; margin-left: -1px;">
+                </div>
+                <div style="position: absolute; margin-left: 35px; margin-top: 15px;" align="center"><button class="rank-btn" data-id="3"></button></div></td>
+            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #C087DE; border-radius: 15px;" width="110" height="120">
+                <div style="position: absolute; z-index: 1;">
+                    <img id="fotos" onclick="mostrarImagen('Recursos/Smackdown2009.jpg')" src="Recursos/Smackdown2009.jpg" style="width: 112px; height: 122px; border-radius: 15px; margin-top: -61px; margin-left: -1px;">
+                </div>
+                <div style="position: absolute; margin-left: 35px; margin-top: 15px;" align="center"><button class="rank-btn" data-id="4"></button></div></td>
         </tr>
         <tr>
-            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px;" width="110" height="120">Andrés<br> <audio controls style="width: 100px; height: 30px;"> <source src="Recursos/Audio5.mp3" type="audio/mpeg"> </audio> <div style="position: absolute; margin-left: 35px; margin-top: 0px;" align="center"><button class="rank-btn" data-id="5"></button></div></td>
-            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px;" width="110" height="120">Boing boing<br> <audio controls style="width: 100px; height: 30px;"> <source src="Recursos/Audio6.mp3" type="audio/mpeg"> </audio> <div style="position: absolute; margin-left: 35px; margin-top: 0px;" align="center"><button class="rank-btn" data-id="6"></button></div></td>
-            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px;" width="110" height="120">Fui fiu<br> <audio controls style="width: 100px; height: 30px;"> <source src="Recursos/Audio7.mp3" type="audio/mpeg"> </audio> <div style="position: absolute; margin-left: 35px; margin-top: 0px;" align="center"><button class="rank-btn" data-id="7"></button></div></td>
-            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px;" width="110" height="120">El grito<br> <audio controls style="width: 100px; height: 30px;"> <source src="Recursos/Audio8.mp3" type="audio/mpeg"> </audio> <div style="position: absolute; margin-left: 35px; margin-top: 0px;" align="center"><button class="rank-btn" data-id="8"></button></div></td>
+            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #C087DE; border-radius: 15px;" width="110" height="120">
+                <div style="position: absolute; z-index: 1;">
+                    <img id="fotos" onclick="mostrarImagen('Recursos/Pes6.jpg')" src="Recursos/Pes6.jpg" style="width: 112px; height: 122px; border-radius: 15px; margin-top: -61px; margin-left: -1px;">
+                </div>
+                <div style="position: absolute; margin-left: 35px; margin-top: 15px;" align="center"><button class="rank-btn" data-id="5"></button></div></td>
+            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #C087DE; border-radius: 15px;" width="110" height="120">
+                <div style="position: absolute; z-index: 1;">
+                    <img id="fotos" onclick="mostrarImagen('Recursos/FnfGold.png')" src="Recursos/FnfGold.png" style="width: 112px; height: 122px; border-radius: 15px; margin-top: -61px; margin-left: -1px;">
+                </div>
+                <div style="position: absolute; margin-left: 35px; margin-top: 15px;" align="center"><button class="rank-btn" data-id="6"></button></div></td>
+            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #C087DE; border-radius: 15px;" width="110" height="120">
+                <div style="position: absolute; z-index: 1;">
+                    <img id="fotos" onclick="mostrarImagen('Recursos/PicoPark.png')" src="Recursos/PicoPark.png" style="width: 112px; height: 122px; border-radius: 15px; margin-top: -61px; margin-left: -1px;">
+                </div>
+                <div style="position: absolute; margin-left: 35px; margin-top: 15px;" align="center"><button class="rank-btn" data-id="7"></button></div></td>
+            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #C087DE; border-radius: 15px;" width="110" height="120">
+                <div style="position: absolute; z-index: 1;">
+                    <img id="fotos" onclick="mostrarImagen('Recursos/TheMind.png')" src="Recursos/TheMind.png" style="width: 112px; height: 122px; border-radius: 15px; margin-top: -61px; margin-left: -1px;">
+                </div>
+                <div style="position: absolute; margin-left: 35px; margin-top: 15px;" align="center"><button class="rank-btn" data-id="8"></button></div></td>
         </tr>
     </table>
+    <div class="overlay" id="overlay" onclick="cerrarImagen()">
+        <img src="" class="popup" id="imagen-popup">
+    </div>
+
+    <script>
+        function mostrarImagen(ruta) {
+            document.getElementById("imagen-popup").src = ruta; // Cambia la imagen
+            document.getElementById("overlay").classList.add("show");
+        }
+
+        function cerrarImagen() {
+            document.getElementById("overlay").classList.remove("show");
+        }
+    </script> 
     <script>
     let selectedRanks = [];
 const buttons = document.querySelectorAll(".rank-btn");
