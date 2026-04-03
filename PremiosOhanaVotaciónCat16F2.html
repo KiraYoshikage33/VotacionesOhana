@@ -4,7 +4,7 @@
   <link rel="icon" href="Recursos/OHANA.ico" type="image/x-icon">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Premios Ohana 2024/25</title>
+  <title>Premios Ohana 2025/26</title>
   <script type="text/javascript">
   function avanzar1(f) {
     if (f.Id.value == "") {
@@ -39,14 +39,13 @@ function validarYAvanzar() {
         alert("Debes marcar 4 opciones antes de continuar.");
     } else {
         // Si todo está bien, redirige a la siguiente página
-        location.href = "PremiosOhanaVotaciónFinalF2.html";  // Cambia la URL de la página según corresponda
+        location.href = "PremiosOhanaVotaciónCat17F2.html";  // Cambia la URL de la página según corresponda
     }
 }
 
     </script>
   <style type="text/css">
     input#borde:hover {border: 1px solid white !important;}
-    img#fotos:hover {border: 1px solid white;}
 
 
 /*------------------------------------------------Ventana------------------------------------------*/
@@ -71,9 +70,7 @@ function validarYAvanzar() {
     transform: translate(-50%, -50%);
     width: 650px;
     max-height: 1000px; /* Establece una altura máxima */
-    background-image: url(Recursos/DoradoFondo.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
+    background: #6d0ba5;
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
@@ -111,7 +108,6 @@ function validarYAvanzar() {
         position: relative; /* Esto hace que no esté centrado en la celda */
         margin-top: 5px;
         margin-left: 5px;
-        z-index: 2;
     }
 
     .rank-btn:hover {
@@ -123,43 +119,9 @@ function validarYAvanzar() {
         color: black;
     }
 
-
-/*-----------------------------------------------Cosas enfocar-------------------------------------*/
-
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Oscurece el fondo */
-            backdrop-filter: blur(5px); /* Aplica el desenfoque */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            visibility: hidden;
-            opacity: 0;
-            transition: opacity 0.3s ease, visibility 0.3s;
-            z-index: 4;
-        }
-
-        .popup {
-            max-width: 300px; /* Ajusta el tamaño de la imagen */
-            max-height: 80vh;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
-            z-index: 5;
-        }
-
-        .overlay.show {
-            visibility: visible;
-            opacity: 1;
-        }
-
-
-
   </style>
 </head>
-<body style="background-color: #d8c605">
+<body style="background-color: #6d0ba5">
   <form name="f">
   <div class="overlay-box">
     <div id="Identificador" class="popup-box">
@@ -197,47 +159,17 @@ function validarYAvanzar() {
         <img src="Recursos/OhanaLogo.png" width="200" style="position: absolute; margin-left: -95px; margin-top: -20px;">
       </div>
       <div align="center" style="font-size: 50px; margin-top: 125px; font-family: 'Franklin Gothic'; color: white;">
-        <p>MVP</p>
+        <p>AUDIO DEL AÑO</p>
       </div>
       <div style="position: absolute; margin-left: 68px; margin-top: -20px; z-index: 5; font-size: 20px;">
     <table cellspacing="5">
         <tr>
-            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px; background-size: cover;" width="120" height="170">
-                <div style="position: absolute; z-index: 1;">
-                    <img id="fotos" onclick="mostrarImagen('Recursos/Eric.jpeg')" src="Recursos/Eric.jpeg" style="width: 122px; height: 172px; border-radius: 15px; margin-top: -86px; margin-left: -1px;">
-                </div>
-                <div style="position: absolute; margin-left: 41px; margin-top: 44px;" align="center"><button class="rank-btn" data-id="1"></button></div></td>
-            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px;" width="120" height="120">
-                <div style="position: absolute; z-index: 1;">
-                    <img id="fotos" onclick="mostrarImagen('Recursos/Mario.jpeg')" src="Recursos/Mario.jpeg" style="width: 122px; height: 172px; border-radius: 15px; margin-top: -86px; margin-left: -1px;">
-                </div>
-                <div style="position: absolute; margin-left: 41px; margin-top: 44px;" align="center"><button class="rank-btn" data-id="2"></button></div></td>
-            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px;" width="120" height="120">
-                <div style="position: absolute; z-index: 1;">
-                    <img id="fotos" onclick="mostrarImagen('Recursos/Lorenzo.jpeg')" src="Recursos/Lorenzo.jpeg" style="width: 122px; height: 172px; border-radius: 15px; margin-top: -86px; margin-left: -1px;">
-                </div>
-                <div style="position: absolute; margin-left: 41px; margin-top: 44px;" align="center"><button class="rank-btn" data-id="3"></button></div></td>
-            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px;" width="120" height="120">
-                <div style="position: absolute; z-index: 1;">
-                    <img id="fotos" onclick="mostrarImagen('Recursos/Hugo.jpeg')" src="Recursos/Hugo.jpeg" style="width: 122px; height: 172px; border-radius: 15px; margin-top: -86px; margin-left: -1px;">
-                </div>
-                <div style="position: absolute; margin-left: 41px; margin-top: 44px;" align="center"><button class="rank-btn" data-id="4"></button></div></td>
+            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #C087DE; border-radius: 15px;" width="120" height="170">Fuego<br> <audio controls style="width: 110px; height: 30px;"> <source src="Recursos/Audio1.mp3" type="audio/mpeg"> </audio> <div style="position: absolute; margin-left: 41px; margin-top: 16px;" align="center"><button class="rank-btn" data-id="1"></button></div></td>
+            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #C087DE; border-radius: 15px;" width="120" height="120">Madre mia<br> <audio controls style="width: 110px; height: 30px;"> <source src="Recursos/Audio2.mp3" type="audio/mpeg"> </audio> <div style="position: absolute; margin-left: 41px; margin-top: 16px;" align="center"><button class="rank-btn" data-id="2"></button></div></td>
+            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #C087DE; border-radius: 15px;" width="120" height="120">Mi primer amor<br> <audio controls style="width: 110px; height: 30px;"> <source src="Recursos/Audio4.mp3" type="audio/mpeg"> </audio> <div style="position: absolute; margin-left: 41px; margin-top: 5px;" align="center"><button class="rank-btn" data-id="3"></button></div></td>
+            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #C087DE; border-radius: 15px;" width="120" height="120">Sumar<br> <audio controls style="width: 110px; height: 30px;"> <source src="Recursos/Audio6.mp3" type="audio/mpeg"> </audio> <div style="position: absolute; margin-left: 41px; margin-top: 16px;" align="center"><button class="rank-btn" data-id="4"></button></div></td>
         </tr>
     </table>
-    <div class="overlay" id="overlay" onclick="cerrarImagen()">
-        <img src="" class="popup" id="imagen-popup">
-    </div>
-
-    <script>
-        function mostrarImagen(ruta) {
-            document.getElementById("imagen-popup").src = ruta; // Cambia la imagen
-            document.getElementById("overlay").classList.add("show");
-        }
-
-        function cerrarImagen() {
-            document.getElementById("overlay").classList.remove("show");
-        }
-    </script> 
     <script>
     let selectedRanks = [];
 const buttons = document.querySelectorAll(".rank-btn");
@@ -275,7 +207,7 @@ buttons.forEach(button => {
 </script>
 </div>
       <div align="center" style="position: fixed; margin-left: 195px;">
-        <input type="button" name="Siguiente" value="Finalizar" style="border-radius: 100px; border: none; background-color: white; font-size: 25px; font-family: 'Franklin Gothic'; color: #383838; padding: 10px; margin-top: 214px; height: 50px; width: 260px;" onclick="validarYAvanzar()">
+        <input type="button" name="Siguiente" value="Siguiente" style="border-radius: 100px; border: none; background-color: white; font-size: 25px; font-family: 'Franklin Gothic'; color: #383838; padding: 10px; margin-top: 214px; height: 50px; width: 260px;" onclick="validarYAvanzar()">
       </div>
     </div>
 

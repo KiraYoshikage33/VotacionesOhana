@@ -4,7 +4,7 @@
   <link rel="icon" href="Recursos/OHANA.ico" type="image/x-icon">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Premios Ohana 2024/25</title>
+  <title>Premios Ohana 2025/26</title>
   <script type="text/javascript">
   function avanzar1(f) {
     if (f.Id.value == "") {
@@ -202,22 +202,22 @@ function validarYAvanzar() {
         <tr>
             <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px; background-size: cover;" width="120" height="170">
                 <div style="position: absolute; z-index: 1;">
-                    <img id="fotos" onclick="mostrarImagen('Recursos/Troglodita.jpeg')" src="Recursos/Troglodita.jpeg" style="width: 122px; height: 172px; border-radius: 15px; margin-top: -86px; margin-left: -1px;">
+                    <img id="fotos" onclick="mostrarImagen('Recursos/Huevo.jpg')" src="Recursos/Huevo.jpg" style="width: 122px; height: 172px; border-radius: 15px; margin-top: -86px; margin-left: -1px;">
                 </div>
                 <div style="position: absolute; margin-left: 41px; margin-top: 44px;" align="center"><button class="rank-btn" data-id="1"></button></div></td>
             <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px;" width="120" height="120">
                 <div style="position: absolute; z-index: 1;">
-                    <img id="fotos" onclick="mostrarImagen('Recursos/Bob.jpeg')" src="Recursos/Bob.jpeg" style="width: 122px; height: 172px; border-radius: 15px; margin-top: -86px; margin-left: -1px;">
+                    <img id="fotos" onclick="mostrarVideo('Recursos/Culetew.mp4')" src="Recursos/Culete.jpg" style="width: 122px; height: 172px; border-radius: 15px; margin-top: -86px; margin-left: -1px;">
                 </div>
                 <div style="position: absolute; margin-left: 41px; margin-top: 44px;" align="center"><button class="rank-btn" data-id="2"></button></div></td>
             <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px;" width="120" height="120">
                 <div style="position: absolute; z-index: 1;">
-                    <img id="fotos" onclick="mostrarImagen('Recursos/Repostea.jpeg')" src="Recursos/Repostea.jpeg" style="width: 122px; height: 172px; border-radius: 15px; margin-top: -86px; margin-left: -1px;">
+                    <img id="fotos" onclick="mostrarVideo('Recursos/Monow.mp4')" src="Recursos/Mono.jpg" style="width: 122px; height: 172px; border-radius: 15px; margin-top: -86px; margin-left: -1px;">
                 </div>
                 <div style="position: absolute; margin-left: 41px; margin-top: 44px;" align="center"><button class="rank-btn" data-id="3"></button></div></td>
             <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px;" width="120" height="120">
                 <div style="position: absolute; z-index: 1;">
-                    <img id="fotos" onclick="mostrarImagen('Recursos/Patrick.jpeg')" src="Recursos/Patrick.jpeg" style="width: 122px; height: 172px; border-radius: 15px; margin-top: -86px; margin-left: -1px;">
+                    <img id="fotos" onclick="mostrarImagen('Recursos/GoldHuevo.jpg')" src="Recursos/GoldHuevo.jpg" style="width: 122px; height: 172px; border-radius: 15px; margin-top: -86px; margin-left: -1px;">
                 </div>
                 <div style="position: absolute; margin-left: 41px; margin-top: 44px;" align="center"><button class="rank-btn" data-id="4"></button></div></td>
         </tr>
@@ -225,6 +225,53 @@ function validarYAvanzar() {
     <div class="overlay" id="overlay" onclick="cerrarImagen()">
         <img src="" class="popup" id="imagen-popup">
     </div>
+        <div id="video-overlay" class="overlay" onclick="cerrarVideo()">
+    <video id="video-popup" controls></video>
+</div>
+
+<style>
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease;
+    }
+
+    .overlay.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    #video-popup {
+        width: 50%;
+        max-width: 600px;
+        border-radius: 10px;
+    }
+</style>
+
+<script>
+    function mostrarVideo(ruta) {
+        let video = document.getElementById("video-popup");
+        video.src = ruta;
+        document.getElementById("video-overlay").classList.add("show");
+        video.play(); // Reproduce el video automáticamente
+    }
+
+    function cerrarVideo() {
+        let video = document.getElementById("video-popup");
+        video.pause(); // Pausa el video antes de ocultarlo
+        video.currentTime = 0; // Reinicia el video
+        document.getElementById("video-overlay").classList.remove("show");
+    }
+</script>
 
     <script>
         function mostrarImagen(ruta) {

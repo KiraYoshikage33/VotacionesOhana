@@ -4,7 +4,7 @@
   <link rel="icon" href="Recursos/OHANA.ico" type="image/x-icon">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Premios Ohana 2024/25</title>
+  <title>Premios Ohana 2025/26</title>
   <script type="text/javascript">
   function avanzar1(f) {
     if (f.Id.value == "") {
@@ -195,83 +195,47 @@ function validarYAvanzar() {
         <img src="Recursos/OhanaLogo.png" width="200" style="position: absolute; margin-left: -95px; margin-top: -20px;">
       </div>
       <div align="center" style="font-size: 50px; margin-top: 125px; font-family: 'Franklin Gothic'; color: white;">
-        <p>COSA HUGOFRIKI DEL AÑO</p>
+        <p>HUEVO DEL AÑO</p>
       </div>
       <div style="position: absolute; margin-left: 68px; margin-top: -20px; z-index: 5; font-size: 20px;">
     <table cellspacing="5">
         <tr>
-            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px;" width="120" height="170">Foto Popeye<div style="position: absolute; margin-left: 41px; margin-top: 33px;" align="center"><button class="rank-btn" data-id="1"></button></div></td>
-</td>
-
-
-            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px; background-size: cover;" width="120" height="120">
-    <div style="position: absolute; z-index: 1;">
-        <img id="fotos" onclick="mostrarVideo('Recursos/Videonintendo.mp4')" src="Recursos/VideonintendoFoto.jpg" style="width: 122px; height: 172px; border-radius: 15px; margin-top: -86px; margin-left: -1px;">
-    </div>
-    <div style="position: absolute; margin-left: 41px; margin-top: 44px;" align="center"><button class="rank-btn" data-id="2"></button></div>
-</td>
-
-
-            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px;" width="120" height="120">Tengo frío<div style="position: absolute; margin-left: 41px; margin-top: 33px;" align="center"><button class="rank-btn" data-id="3"></button></div></td>
-
-
-            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px; background-size: cover;" width="120" height="120">
-    <div style="position: absolute; z-index: 1;">
-        <img id="fotos" onclick="mostrarVideo('Recursos/VideoLQSA.mp4')" src="Recursos/VideoLQSAFoto.jpg" style="width: 122px; height: 172px; border-radius: 15px; margin-top: -86px; margin-left: -1px;">
-    </div>
-    <div style="position: absolute; margin-left: 41px; margin-top: 44px;" align="center"><button class="rank-btn" data-id="4"></button></div>
-</td>
-
-
+            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px; background-size: cover;" width="120" height="170">
+                <div style="position: absolute; z-index: 1;">
+                    <img id="fotos" onclick="mostrarImagen('Recursos/Mario.jpeg')" src="Recursos/Mario.jpeg" style="width: 122px; height: 172px; border-radius: 15px; margin-top: -86px; margin-left: -1px;">
+                </div>
+                <div style="position: absolute; margin-left: 41px; margin-top: 44px;" align="center"><button class="rank-btn" data-id="1"></button></div></td>
+            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px;" width="120" height="120">
+                <div style="position: absolute; z-index: 1;">
+                    <img id="fotos" onclick="mostrarImagen('Recursos/Lorenzo.jpeg')" src="Recursos/Lorenzo.jpeg" style="width: 122px; height: 172px; border-radius: 15px; margin-top: -86px; margin-left: -1px;">
+                </div>
+                <div style="position: absolute; margin-left: 41px; margin-top: 44px;" align="center"><button class="rank-btn" data-id="2"></button></div></td>
+            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px;" width="120" height="120">
+                <div style="position: absolute; z-index: 1;">
+                    <img id="fotos" onclick="mostrarImagen('Recursos/Aaron.jpeg')" src="Recursos/Aaron.jpeg" style="width: 122px; height: 172px; border-radius: 15px; margin-top: -86px; margin-left: -1px;">
+                </div>
+                <div style="position: absolute; margin-left: 41px; margin-top: 44px;" align="center"><button class="rank-btn" data-id="3"></button></div></td>
+            <td style="text-align: center; font-family: 'Franklin Gothic'; color: white; background-color: #77AE86; border-radius: 15px;" width="120" height="120">
+                <div style="position: absolute; z-index: 1;">
+                    <img id="fotos" onclick="mostrarImagen('Recursos/Angel.jpeg')" src="Recursos/Angel.jpeg" style="width: 122px; height: 172px; border-radius: 15px; margin-top: -86px; margin-left: -1px;">
+                </div>
+                <div style="position: absolute; margin-left: 41px; margin-top: 44px;" align="center"><button class="rank-btn" data-id="4"></button></div></td>
         </tr>
     </table>
-    <div id="video-overlay" class="overlay" onclick="cerrarVideo()">
-    <video id="video-popup" controls></video>
-</div>
+    <div class="overlay" id="overlay" onclick="cerrarImagen()">
+        <img src="" class="popup" id="imagen-popup">
+    </div>
 
-<style>
-    .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.7);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease;
-    }
+    <script>
+        function mostrarImagen(ruta) {
+            document.getElementById("imagen-popup").src = ruta; // Cambia la imagen
+            document.getElementById("overlay").classList.add("show");
+        }
 
-    .overlay.show {
-        opacity: 1;
-        visibility: visible;
-    }
-
-    #video-popup {
-        width: 50%;
-        max-width: 600px;
-        border-radius: 10px;
-    }
-</style>
-
-<script>
-    function mostrarVideo(ruta) {
-        let video = document.getElementById("video-popup");
-        video.src = ruta;
-        document.getElementById("video-overlay").classList.add("show");
-        video.play(); // Reproduce el video automáticamente
-    }
-
-    function cerrarVideo() {
-        let video = document.getElementById("video-popup");
-        video.pause(); // Pausa el video antes de ocultarlo
-        video.currentTime = 0; // Reinicia el video
-        document.getElementById("video-overlay").classList.remove("show");
-    }
-</script>
+        function cerrarImagen() {
+            document.getElementById("overlay").classList.remove("show");
+        }
+    </script> 
     <script>
     let selectedRanks = [];
 const buttons = document.querySelectorAll(".rank-btn");
